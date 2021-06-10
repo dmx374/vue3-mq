@@ -18,7 +18,6 @@ export default {
 		},
 	},
 	setup(props, context) {
-		console.log("Running setup()");
 		const defaultOptions = {
 			name: "fade",
 			mode: "out-in",
@@ -71,7 +70,6 @@ export default {
 			}
 			return slots.length > 0 ? slots : undefined;
 		};
-		console.log(context.slots.default);
 		// If the user includes a bare element inside the mq-layout component
 		// Uses the props.tag property to render an element
 		if (context.slots.default) {

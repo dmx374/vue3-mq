@@ -4,6 +4,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 demo
+.cache
 
 # Editor directories and files
 .idea
@@ -12,3 +13,5 @@ demo
 *.ntvs*
 *.njsproj
 *.sln
+secret.*
+.npmrc

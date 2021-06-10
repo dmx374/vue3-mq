@@ -1,8 +1,9 @@
 # Vue 3 MQ (Media Query)
 Define your breakpoints and build responsive design semantically and declaratively in a mobile-first way with Vue 3.
 
-_Use with `vue:  ^3.x.x`
-_
+Use with `vue@^3.x.x`
+
+Not compatible with Vue 2. Use [vue-mq](https://www.npmjs.com/package/vue-mq) if you require Vue 2 support.
 
 
 ## Table of Contents
@@ -13,20 +14,19 @@ _
 - [Browser Support](#browser-support)
 - [Support](#support)
 
-## Migration Guide
+## Migration Guide from vue-mq
 
-#### Filter
-Since Vue 3 has dropped support for filters, the previous functionality has been removed 
-#### SSR
-Presently, support for SSR has been removed
+#### **Filter**
+Since Vue 3 has dropped support for filters, the previous functionality has been removed.
+#### **SSR**
+Presently, support for SSR has been removed until it can be tested properly.
 
 ## Demo
-
 See https://vue3-mq.info for a demonstration and usage guide for Vue3-MQ.
 
 ## Installation
 
-#### Using NPM
+#### **Using NPM**
 
 ```sh
 npm install vue3-mq
@@ -52,10 +52,13 @@ import VueMq from "vue3-mq";
 const app = createApp({});
 
 app.use(VueMq, {
-  breakpoints: { // default breakpoints - customize this
-    sm: 450,
-    md: 1250,
-    lg: Infinity,
+  breakpoints: { // default breakpoints - customise this
+    xs: 576,
+    sm: 768,
+    md: 992,
+    lg: 1200,
+    xl: 1400,
+    xxl: Infinity
   }
 })
 
@@ -141,28 +144,47 @@ In addition to `$mq` property this plugin provide a wrapper component to facilit
 
 `tag` => optional : String - sets the HTML tag to use for the rendered component (default 'div')
 
-#### MQ prop: plus modifier
+#### **MQ prop: no modifier**
+Renders the component only on screens matching your mq value
+```html
+<mq-layout mq="lg">
+  <span> Display on lg </span>
+</mq-layout>
+```
+
+#### **MQ prop: plus modifier**
 Appending a `+` to your mq property will make the component render on that breakpoint and any *above*
 ```html
 <mq-layout mq="lg+" tag="span">I will render on large and above screen sizes</mq-layout>
 ```
 
-#### MQ prop: minus modifier
+#### **MQ prop: minus modifier**
 Appending a `-` to your mq property will make the component render on that breakpoint and any *below*
 ```html
 <mq-layout mq="md-" tag="span">I will render on medium and below screen sizes</mq-layout>
 ```
 
-#### MQ prop: range modifier
+#### **MQ prop: range modifier**
 Placing a `-` between two breakpoints in your mq property will make the component render on any breakpoints in that range
 ```html
 <mq-layout mq="sm-lg">I will render on small, medium and large screen sizes</mq-layout>
 ```
 
+#### **MQ prop: array of breakpoints**
+Will render the component if the current screen size matches any of the breakpoints in the array. Remember that you'll need to precede the property with a ```:``` in your template.
+```html
+<mq-layout :mq="['sm', 'lg']" tag="span">
+  Display on sm and lg
+</mq-layout>
+```
+
 ## Browser Support
-This plugin relies on matchMedia API to detect screen size change. So for older browsers and IE, you should polyfill this out:
+Since Vue3 will never support Internet Explorer, this browser is not supported.
+
+If your browser doesn't support the MatchMedia API, you will need to use a polyfill to add support:
+
 Paul Irish: [matchMedia polyfill](https://github.com/paulirish/matchMedia.js)
 
-## Support
+## Bugs / Support
 
 Please [open an issue](https://github.com/craigrileyuk/vue3-mq/issues/new) for support.
