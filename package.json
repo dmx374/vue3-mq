@@ -1,6 +1,6 @@
 {
   "name": "vue3-mq",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Handle media queries easily & build responsive design with Vue 3",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
