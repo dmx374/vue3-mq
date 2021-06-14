@@ -207,7 +207,7 @@
     var isMqArray = Array.isArray(mq);
     var isMqPlus = !isMqArray.value && /\+$/.test(mq) === true;
     var isMqMinus = !isMqArray.value && /-$/.test(mq) === true;
-    var isMqRange = !isMqArray.value && /^\w*-\w*/.test(mq) === true;
+    var isMqRange = !isMqArray.value && /^\w+-\w+/.test(mq) === true;
     var activeBreakpoints = vue.computed(function () {
       if (isMqArray) return mq;else if (!isMqPlus && !isMqMinus && !isMqRange) return [mq];else {
         return selectBreakpoints({
