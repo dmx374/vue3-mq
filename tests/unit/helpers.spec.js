@@ -34,17 +34,17 @@ describe("selectBreakpoints", () => {
 				xxl: Infinity,
 			},
 		};
-  });
-  
-	it('throws an error if a breakpoint key is missing', () => {
+	});
+
+	it("throws an error if a breakpoint key is missing", () => {
 		expect(() =>
 			sanitiseBreakpoints({
-        md: 992,
+				md: 992,
 				"": 1200,
-        xl: 1400
-      })
-    ).toThrow("Invalid or missing breakpoint key");
-  });
+				xl: 1400,
+			})
+		).toThrow("Invalid or missing breakpoint key");
+	});
 
 	it("returns the correct breakpoints in mq+ mode", () => {
 		const result = selectBreakpoints({
@@ -86,9 +86,9 @@ describe("selectBreakpoints", () => {
 				isMqRange: { value: true },
 			})
 		).toThrow("Range from breakpoint (error) not found");
-  });
-  
-  it('throws an error if the "from" breakpoint is empty', () => {
+	});
+
+	it('throws an error if the "from" breakpoint is empty', () => {
 		expect(() =>
 			selectBreakpoints({
 				mqProp: "-xl",
@@ -104,5 +104,5 @@ describe("selectBreakpoints", () => {
 				isMqRange: { value: true },
 			})
 		).toThrow("Range to breakpoint (error) not found");
-  });
+	});
 });

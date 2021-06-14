@@ -6,6 +6,7 @@ import {
 	sanitiseBreakpoints,
 	selectBreakpoints,
 } from "./helpers";
+const test = "THIS IS A TEST";
 
 export const DEFAULT_BREAKPOINTS = {
 	xs: 576,
@@ -55,7 +56,7 @@ export function shouldRender(mq) {
 	const isMqArray = Array.isArray(mq);
 	const isMqPlus = !isMqArray.value && /\+$/.test(mq) === true;
 	const isMqMinus = !isMqArray.value && /-$/.test(mq) === true;
-	const isMqRange = !isMqArray.value && /^\w*-\w*/.test(mq) === true;
+	const isMqRange = !isMqArray.value && /^\w+-\w+/.test(mq) === true;
 	const activeBreakpoints = computed(() => {
 		if (isMqArray) return mq;
 		else if (!isMqPlus && !isMqMinus && !isMqRange) return [mq];
@@ -68,6 +69,5 @@ export function shouldRender(mq) {
 			});
 		}
 	});
-
 	return activeBreakpoints.value.includes(currentBreakpoint.value);
 }
