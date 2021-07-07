@@ -78,7 +78,7 @@ export function subscribeToMediaQuery(mediaQuery, enter) {
 		mql.addEventListener("change", cb); //subscribing
 	} else {
 		// Deprecated property included for backwards compatibility
-		mql.addListener("change", cb);
+		mql.addListener(cb);
 	}
 	cb(mql); //initial trigger
 }
